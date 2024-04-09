@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	/* Percentage based off browser default font size (16px) to get 1rem = 10px.
+       This way if the user has a larger or smaller default font size we adapt well. */
+	font-size: 62.5%; // 1rem = 10px
+	scroll-behavior: smooth;
+
+	@include respond(tab-land) {
+		font-size: 56.25%; // 1rem = 9px, width < 1200px
+	}
+	@include respond(tab-port) {
+		font-size: 50%; // 1rem = 8px, width < 900px
+	}
+	@include respond(big-desk) {
+		font-size: 75%; // 1rem = 12px, width > 1800px
+	}
+}
+
+body {
+	box-sizing: border-box;
+	padding: 3rem;
+
+	@include respond(tab-port) {
+		padding: 0;
+	}
+}
+
+::selection {
+	background-color: $color-primary;
+	color: $color-white;
+}
